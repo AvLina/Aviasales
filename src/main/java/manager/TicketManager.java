@@ -5,7 +5,7 @@ import repository.TicketRepository;
 
 public class TicketManager {
 
-    private TicketRepository repository;
+    private final TicketRepository repository;
 
     public TicketManager(TicketRepository repository) {
         this.repository = repository;
@@ -16,6 +16,7 @@ public class TicketManager {
     }
 
     public Ticket[] searchTicket(String from, String to) {
+        Ticket[] tickets = repository.findAll();
         Ticket[] result = new Ticket[0];
         for (Ticket ticket : repository.findAll()) {
             if (ticket.getDepartureAirport().contains(from)) {
